@@ -4,13 +4,16 @@ var a = 65;
 var d = 68;
 
 var characterx = 100;
-var charactery = 100;
+var charactery = 300;
 var characterdiameter = 25; 
 
 var circley = 200;
 var circley1 = 200;
+var circlex = 100;
+var circlexmovement= 10;
 var circlemovement = 5;
 var circlemovement1 = -5;
+
 
 var meteorx = 80;
 var meteory = 80;
@@ -66,29 +69,28 @@ function draw()
 
     
     
-    fill(255,0,0)
+    fill(255,0,155)
     circle(500,circley1,15) ; 
     circle(900,circley1,40) ;
     circle(1300,circley1,70);
   
-  
+  circlemovement1 = (floor(random()*10)+1)
     circley1 += circlemovement1
-    if (circley1 <= 400 )
-    {circley1 ++;} ;
+    circlex += circlexmovement
+    if (circley1 > 400 )
+    {circley1 = 0 } ;
+    if (circley1 < 0)
+    {circley = 0 } ;
 
-    if (circley1 >= 400)
-    {circlemovement1 *= -1} ;
-
-    if (circley1 <= 10) 
-    {circlemovement1 *= -1};
-
-    if (circley1 <= 10 )
-        {circlemovement1 *-1} ;
+    if (circlex <= 1900) 
+    {circlex = circlexmovement *= -1  };
   
 //Meteor Shower
-circle(meteorx, meteory, 10);
-meteorxmovement = (floor(random()*10)+1);
-meteorymovement = (floor(random()*10)+1)
+
+fill(255,0,0)
+circle(meteorx, meteory, 60);
+meteorxmovement = (floor(random()*20)+1);
+meteorymovement = (floor(random()*10)+1) ;
 meteorx += meteorxmovement;
 meteory += meteorymovement;
 if(meteorx > 1900)
