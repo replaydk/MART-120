@@ -12,12 +12,11 @@ var circley1 = 200;
 var circlemovement = 5;
 var circlemovement1 = -5;
 
-/* To be completed
-var shapeX = 30;
-var shapeY = 50;
-var shapeXSpeed;
-var shapeYSpeed;
-*/
+var meteorx = 80;
+var meteory = 80;
+var meteorxmovement= 80;
+var meteorymovement= 30;
+    
 var mousex = 0;
 var mousey = 0;
 
@@ -71,7 +70,9 @@ function draw()
     circle(500,circley1,15) ; 
     circle(900,circley1,40) ;
     circle(1300,circley1,70);
-   circley1 += circlemovement1
+  
+  
+    circley1 += circlemovement1
     if (circley1 <= 400 )
     {circley1 ++;} ;
 
@@ -84,36 +85,21 @@ function draw()
     if (circley1 <= 10 )
         {circlemovement1 *-1} ;
   
-/*
-        circle(shapeX, shapeY, 10);
-
-        // get a random speed when the it first starts
-        shapeXSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
-        shapeYSpeed = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
+//Meteor Shower
+circle(meteorx, meteory, 10);
+meteorxmovement = (floor(random()*10)+1);
+meteorymovement = (floor(random()*10)+1)
+meteorx += meteorxmovement;
+meteory += meteorymovement;
+if(meteorx > 1900)
+{meteorx = 0;}
+if(meteorx < 0)
+{meteorx = 0;}
+if(meteory > 400)
+{meteory = 0; }
+if(meteory < 0)
+{meteory = 400;}
    
-       // move the shape
-       shapeX += shapeXSpeed;
-       shapeY += shapeYSpeed;
-       // check to see if the shape has gone out of bounds
-       if(shapeX > width)
-       {
-           shapeX = 0;
-       }
-       if(shapeX < 0)
-       {
-           shapeX = width;
-       }
-       if(shapeY > height)
-       {
-           shapeY = 0;
-       }
-       if(shapeY < 0)
-       {
-           shapeY = height;
-       }
-*/
-
-
 //exit sign
   
 text("Exit", 1750,370)
@@ -128,7 +114,7 @@ circle(characterx,charactery,characterdiameter);
 //Win Conditions
 if(characterx >= 1820  && characterx <= 1900) wincon1 = true  
 else {wincon1 = false};
-if (charactery >= 380 && charactery <=450) wincon2 = true
+if (charactery >= 380 && charactery <=600) wincon2 = true
 else {wincon2 = false};
 
 if (wincon1 == true && wincon2 == true)
